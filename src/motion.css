@@ -1,0 +1,97 @@
+/* ==========================================================================
+   Motion layer, shared by every page.
+   Easing follows "fast out, soft land": ease-out quint for entrances, short
+   durations for anything the visitor triggers. Everything here switches off
+   under prefers-reduced-motion.
+   ========================================================================== */
+:root{--ease-out:cubic-bezier(.22,1,.36,1);--ease-io:cubic-bezier(.65,0,.35,1)}
+
+/* ---------- scroll progress ---------- */
+.progress{position:fixed;top:0;left:0;right:0;height:3px;z-index:80;pointer-events:none;transform-origin:0 50%;transform:scaleX(var(--p,0));background:linear-gradient(90deg,var(--blue),var(--cyan),var(--violet),var(--magenta),var(--tangerine),var(--lime))}
+[dir=rtl] .progress{transform-origin:100% 50%;background:linear-gradient(270deg,var(--blue),var(--cyan),var(--violet),var(--magenta),var(--tangerine),var(--lime))}
+
+/* ---------- reveal (upgrades the base .rv) ---------- */
+.js .rv{opacity:0;transform:translateY(34px) scale(.985);filter:blur(6px);transition:opacity .9s var(--ease-out),transform .9s var(--ease-out),filter .9s var(--ease-out)}
+.js .rv.in{opacity:1;transform:none;filter:none}
+/* the first screen is never hidden: it only rises into place */
+.js .hero .rv{opacity:1;filter:none;transform:none;transition:none;animation:rise .9s var(--ease-out) both}
+@keyframes rise{from{transform:translateY(22px)}to{transform:none}}
+
+/* ---------- split headings: words rise out of a mask ---------- */
+.sw{display:inline-block;overflow:hidden;vertical-align:bottom;padding-bottom:.08em;margin-bottom:-.08em}
+.sw>span{display:inline-block;transform:translateY(105%);transition:transform .85s var(--ease-out);transition-delay:calc(var(--i,0) * 45ms)}
+.wsplit.in .sw>span{transform:none}
+.hero h1 .sw{padding-bottom:.14em;margin-bottom:-.14em}
+/* Arabic: dots, shadda and tanween sit well outside the Latin line box, so give the mask room above and below */
+[dir=rtl] .sw{padding:.18em 0 .42em;margin:-.18em 0 -.42em}
+[dir=rtl] .sw>span{transform:translateY(130%)}
+.hero h1 .lit .sw>span{background:linear-gradient(var(--fwd),var(--blue),#00A8E8);-webkit-background-clip:text;background-clip:text;color:transparent;padding:.22em .04em .45em;margin:-.22em -.04em -.45em}
+
+/* ---------- full-page card snap (desktop, fine pointer) ---------- */
+html.snap{scroll-snap-type:y mandatory;scroll-padding-top:72px;scroll-behavior:auto}
+html.snap-soft{scroll-snap-type:y proximity;scroll-padding-top:72px}
+html.snap body>header.hero,html.snap body>section,html.snap-soft body>header.hero,html.snap-soft body>section{scroll-snap-align:start;scroll-margin-top:0}
+html.snap body>section,html.snap body>header.hero{min-height:calc(100vh - 72px);min-height:calc(100svh - 72px);display:flex;flex-direction:column;justify-content:center}
+html.snap body>section>.wrap,html.snap body>header.hero>.wrap{width:100%}
+/* each section is a card that slides over the one before */
+html.cards body>section{border-radius:34px 34px 0 0;margin-top:-34px;box-shadow:0 -28px 60px -38px rgba(10,18,48,.55)}
+html.cards body>section>.wrap{transform-origin:50% 0;transform:translateY(calc(var(--x,0) * -40px)) scale(calc(1 - var(--x,0) * .07));opacity:calc(1 - var(--x,0) * .55)}
+html.cards body>section::after{content:"";position:absolute;inset:0;background:#0A1230;opacity:calc(var(--x,0) * .45);pointer-events:none;z-index:2}
+html.cards body>header.hero>.wrap{transform:scale(calc(1 - var(--x,0) * .06));opacity:calc(1 - var(--x,0) * .6);transform-origin:50% 0}
+html.cards footer{position:relative;z-index:40}
+
+/* ---------- dot navigator ---------- */
+.dots{position:fixed;top:50%;inset-inline-end:18px;transform:translateY(-50%);z-index:70;display:flex;flex-direction:column;gap:12px;padding:12px 8px;border-radius:999px;background:rgba(var(--paper-rgb),.55);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);box-shadow:0 10px 30px -18px rgba(10,18,48,.5)}
+.dots.on-night{background:rgba(17,28,66,.55)}
+.dots button{position:relative;width:10px;height:18px;border:0;padding:0;cursor:pointer;background:#9AA6C6;clip-path:polygon(50% 0,100% 50%,50% 100%,0 50%);transition:background .25s,transform .35s var(--ease-out)}
+.dots button:hover{transform:scale(1.25)}
+.dots button.on{background:var(--c,var(--cyan));transform:scale(1.45)}
+.dots .tip{position:fixed;inset-inline-end:52px;font:600 12px/1 var(--f-body);background:var(--night);color:#fff;padding:7px 10px;border-radius:8px;white-space:nowrap;opacity:0;transform:translateX(6px);transition:opacity .2s,transform .2s var(--ease-out);pointer-events:none}
+.dots .tip.show{opacity:1;transform:none}
+
+/* ---------- cursor light ---------- */
+.glow{position:fixed;left:0;top:0;width:520px;height:520px;margin:-260px 0 0 -260px;border-radius:50%;pointer-events:none;z-index:45;background:radial-gradient(closest-side,rgba(0,102,255,.13),rgba(0,209,255,.06) 45%,transparent 72%);transform:translate3d(var(--gx,-999px),var(--gy,-999px),0);transition:opacity .4s;mix-blend-mode:multiply}
+.glow.on-night{mix-blend-mode:screen;background:radial-gradient(closest-side,rgba(0,209,255,.18),rgba(139,92,255,.08) 45%,transparent 72%)}
+
+/* ---------- magnetic buttons + tilt cards ---------- */
+.mag{transition:transform .35s var(--ease-out),background .2s,box-shadow .2s}
+.tilt{transform:perspective(900px) rotateX(var(--rx,0deg)) rotateY(var(--ry,0deg)) translateY(var(--ty,0));transition:transform .45s var(--ease-out),box-shadow .3s;will-change:transform;position:relative}
+.tilt::before{content:"";position:absolute;inset:0;border-radius:inherit;pointer-events:none;opacity:var(--sh,0);transition:opacity .3s;background:radial-gradient(420px circle at var(--mx,50%) var(--my,50%),rgba(0,209,255,.16),transparent 45%);z-index:0}
+.night .tilt::before,.result.tilt::before{background:radial-gradient(420px circle at var(--mx,50%) var(--my,50%),rgba(0,209,255,.22),transparent 45%)}
+
+/* ---------- parallax backgrounds ---------- */
+.bg{transform:translate3d(0,var(--py,0px),0) scale(1.08)}
+
+/* ---------- hero: tilt + spotlight + typing console + ticker ---------- */
+.hero-art{transform:perspective(1200px) rotateX(var(--hrx,0deg)) rotateY(var(--hry,0deg));transition:transform .6s var(--ease-out)}
+.hero-art .spot{position:absolute;inset:0;pointer-events:none;background:radial-gradient(260px circle at var(--hx,70%) var(--hy,40%),rgba(0,209,255,.28),rgba(139,92,255,.10) 40%,transparent 70%);mix-blend-mode:multiply;transition:opacity .4s}
+.console .row{opacity:0;transform:translateY(6px);animation:typeIn .5s var(--ease-out) forwards;animation-delay:calc(.9s + var(--r,0) * .38s)}
+.console .caret{display:inline-block;width:7px;height:13px;background:var(--cyan);margin-inline-start:6px;vertical-align:-2px;animation:blink 1s steps(2) infinite}
+@keyframes typeIn{to{opacity:1;transform:none}}
+@keyframes blink{50%{opacity:0}}
+.ticker{overflow:hidden;border-top:1px solid var(--line);border-bottom:1px solid var(--line);margin-top:0;-webkit-mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent);mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent);direction:ltr}
+.ticker .tk{display:flex;gap:44px;width:max-content;padding:14px 0;animation:tick 38s linear infinite;font:500 13px/1 var(--f-mono);color:var(--muted);letter-spacing:.06em}
+.ticker .tk span{display:inline-flex;align-items:center;gap:44px;white-space:nowrap}
+.ticker .tk span::after{content:"";width:6px;height:12px;background:var(--cyan);clip-path:polygon(50% 0,100% 50%,50% 100%,0 50%)}
+.ticker:hover .tk{animation-play-state:paused}
+@keyframes tick{to{transform:translateX(-50%)}}
+
+/* ---------- small extras ---------- */
+.svc-links{display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin-top:22px}
+.svc-links .q{font:600 14px var(--f-head);margin-inline-end:6px}
+.svc-links a{font:500 14px/1.2 var(--f-body);padding:11px 16px;border-radius:999px;background:var(--white);border:1px solid var(--line);transition:border-color .2s,color .2s,transform .35s var(--ease-out)}
+.svc-links a:hover{border-color:var(--blue);color:var(--t-blue)}
+.svc-links a::after{content:" →";color:var(--t-blue)}
+[dir=rtl] .svc-links a::after{content:" ←"}
+.foot{grid-template-columns:1.4fr 1fr 1fr 1fr}
+@media (max-width:720px){.foot{grid-template-columns:1fr}.dots{display:none}}
+@media (max-width:1023px){.dots{display:none}}
+@media (pointer:coarse){.glow{display:none}}
+
+@media (prefers-reduced-motion:reduce){
+  .js .rv{opacity:1;transform:none;filter:none}
+  .sw>span{transform:none}
+  .console .row{opacity:1;transform:none;animation:none}
+  .glow,.hero-art .spot,.progress{display:none}
+  .ticker .tk{animation:none}
+}

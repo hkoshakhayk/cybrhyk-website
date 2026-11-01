@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Share card</title>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@500&family=IBM+Plex+Sans+Arabic:wght@600&family=Readex+Pro:wght@600&display=block" rel="stylesheet">
+<style>
+  html,body{margin:0;width:1200px;height:630px;overflow:hidden;background:#0A1230}
+  body{position:relative;font-family:"Readex Pro",sans-serif;color:#fff}
+  svg.lat{position:absolute;inset:0}
+  .fade{position:absolute;inset:0;background:linear-gradient(90deg,#0A1230 38%,rgba(10,18,48,.55) 62%,rgba(10,18,48,0) 85%)}
+  .txt{position:absolute;left:80px;top:96px;width:640px}
+  .logo{height:46px;width:auto;display:block}
+  h1{font-size:76px;line-height:1.02;letter-spacing:-1.6px;margin:58px 0 18px}
+  h1 b{background:linear-gradient(90deg,#0066FF,#00D1FF);-webkit-background-clip:text;color:transparent}
+  .ar{font:600 36px/1.4 "IBM Plex Sans Arabic",sans-serif;color:#9AA6C6;direction:rtl;text-align:left;unicode-bidi:plaintext}
+  .tags{position:absolute;left:80px;bottom:64px;display:flex;gap:12px;font:500 17px "IBM Plex Mono",monospace;color:#C9D0E4}
+  .tags span{border:1px solid #24305C;border-radius:999px;padding:9px 16px;background:rgba(17,28,66,.8)}
+  .dom{position:absolute;right:80px;bottom:72px;font:500 20px "IBM Plex Mono",monospace;color:#00D1FF}
+</style>
+</head>
+<body>
+<svg class="lat" id="lat" viewBox="0 0 1200 630"></svg>
+<div class="fade"></div>
+<div class="txt">
+  <img class="logo" src="brand/logo-night.svg" alt="">
+  <h1>Structured to <b>defend.</b></h1>
+  <div class="ar">هيكلةٌ تحمي.</div>
+</div>
+<div class="tags"><span>Managed SOC · MDR</span><span>ECC-2:2024</span><span>SAMA CSF</span><span>Incident response</span></div>
+<div class="dom">cybrhyk.com</div>
+<script>
+  const S=["#0066FF","#00D1FF","#8B5CFF","#FF3D9A","#FF8A3D","#C6F432"],a=19,b=a*2.64;let s=7,h="";
+  const r=()=>{s=(s*16807)%2147483647;return(s-1)/2147483646};
+  for(let j=0;j<16;j++)for(let i=-1;i<34;i++){const x=2*a*i+(j%2?a:0),y=b*j,k=.86,lit=r()<.05+.3*(x/1200);
+    h+=`<path d="M${x} ${y-b*k}L${x+a*k} ${y}L${x} ${y+b*k}L${x-a*k} ${y}Z" fill="${lit?S[Math.floor(r()*6)]:"#111C42"}"${lit?' opacity=".9"':""}/>`}
+  document.getElementById("lat").innerHTML=h;
+</script>
+</body>
+</html>

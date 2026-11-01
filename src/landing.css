@@ -1,0 +1,51 @@
+/* ---------- service landing pages ---------- */
+.crumbs{font:500 13px/1.4 var(--f-body);color:var(--muted);display:flex;gap:8px;flex-wrap:wrap;margin-bottom:22px}
+.crumbs a{color:var(--t-blue)}
+.crumbs span[aria-hidden]{color:#B4BBD0}
+.lp-hero{background:var(--paper)}
+.lp-hero .grid{display:grid;grid-template-columns:1.25fr .9fr;gap:56px;align-items:center}
+.lp-hero h1{font-size:clamp(40px,5.2vw,68px);line-height:1.04;letter-spacing:-.02em;margin:18px 0 22px}
+[dir=rtl] .lp-hero h1{line-height:1.3;letter-spacing:0}
+.lp-hero .ctas{display:flex;gap:14px;flex-wrap:wrap;margin-top:32px}
+.lp-facts{display:grid;gap:14px}
+.lp-fact{background:var(--night);color:#fff;border-radius:18px;padding:22px 24px;display:grid;grid-template-columns:auto 1fr;gap:18px;align-items:center;box-shadow:0 30px 60px -36px rgba(10,18,48,.6)}
+.lp-fact .n{font:500 30px/1 var(--f-mono);color:var(--c,var(--cyan));min-width:96px}
+.lp-fact p{color:#C9D0E4;font-size:14.5px;line-height:1.5}
+[dir=rtl] .lp-fact p{font-size:15.5px;line-height:1.7}
+.lp-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.lp-card{background:var(--white);border:1px solid var(--line);border-radius:18px;padding:26px;display:flex;flex-direction:column;gap:10px}
+.lp-card .gem{width:14px;height:36px}
+.lp-card h3{font-size:19px}
+.lp-card p{font-size:14.5px;color:var(--muted);line-height:1.6}
+[dir=rtl] .lp-card p{font-size:15.5px;line-height:1.8}
+.lp-steps{display:grid;grid-template-columns:repeat(6,1fr);gap:12px;counter-reset:st;list-style:none}
+.lp-steps li{background:var(--night2);border:1px solid var(--line-n);border-radius:16px;padding:20px 18px;position:relative;overflow:hidden}
+.lp-steps li::before{content:"";position:absolute;left:0;right:0;top:0;height:4px;background:var(--c)}
+.lp-steps .k{font:500 12px var(--f-mono);color:var(--c);letter-spacing:.08em}
+.lp-steps h3{font-size:17px;color:#fff;margin:10px 0 6px}
+.lp-steps p{font-size:13.5px;color:#C9D0E4;line-height:1.5}
+[dir=rtl] .lp-steps p{font-size:14.5px;line-height:1.7}
+.lp-fw{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}
+.lp-fw div{display:grid;grid-template-columns:140px 1fr;gap:16px;align-items:center;background:var(--white);border:1px solid var(--line);border-radius:14px;padding:18px 20px}
+.lp-fw b{font:500 14px var(--f-mono);color:var(--t-blue)}
+.lp-fw span{font-size:14.5px;color:var(--muted)}
+.faq{display:grid;gap:12px;max-width:900px}
+.faq details{background:var(--white);border:1px solid var(--line);border-radius:14px;padding:0 22px;transition:border-color .2s}
+.faq details[open]{border-color:var(--blue)}
+.faq summary{cursor:pointer;list-style:none;font:600 17px/1.4 var(--f-head);padding:20px 0;display:flex;justify-content:space-between;gap:16px;align-items:center}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::after{content:"";flex:none;width:10px;height:18px;background:var(--blue);clip-path:polygon(50% 0,100% 50%,50% 100%,0 50%);transition:transform .35s var(--ease-out)}
+.faq details[open] summary::after{transform:rotate(90deg)}
+.faq details p{color:var(--muted);padding:0 0 20px;line-height:1.7}
+[dir=rtl] .faq details p{line-height:1.9}
+.lp-related{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.lp-related a{display:block;background:var(--white);border:1px solid var(--line);border-radius:16px;padding:22px;transition:border-color .2s}
+.lp-related a:hover{border-color:var(--blue)}
+.lp-related b{display:block;font:600 18px var(--f-head);margin-bottom:6px}
+.lp-related span{font-size:14px;color:var(--t-blue)}
+@media (max-width:1024px){.lp-hero .grid{grid-template-columns:1fr}.lp-cards,.lp-related{grid-template-columns:1fr 1fr}.lp-steps{grid-template-columns:repeat(3,1fr)}}
+@media (max-width:720px){.lp-cards,.lp-related,.lp-fw{grid-template-columns:1fr}.lp-steps{grid-template-columns:1fr 1fr}.lp-fw div{grid-template-columns:1fr;gap:6px}}
+
+.lp-side{display:grid;gap:16px}
+.lp-photo{margin:0;border-radius:22px;overflow:hidden;aspect-ratio:16/9;box-shadow:0 24px 60px -30px rgba(10,18,48,.45)}
+.lp-photo img{width:100%;height:100%;object-fit:cover;display:block}

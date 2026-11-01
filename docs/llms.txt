@@ -1,0 +1,24 @@
+# Cyber HAYKALAH
+
+> Cyber HAYKALAH (سايبر هيكلة), a HAYKALAH company, runs security operations for financial, enterprise and private-sector clients in Saudi Arabia: a 24/7 managed SOC with managed detection and response, governance and compliance evidence for the NCA Essential Cybersecurity Controls (ECC-2:2024) and the SAMA Cyber Security Framework, incident response and digital forensics, penetration testing, and cloud security. Based in Riyadh and Jeddah. Contact: cyber@haykalah.com.
+
+## Pages
+- [Home (English)](https://cybrhyk.com/): the Kingdom's cyber vision, the national frameworks, the SOC loop, services, a sample SOC dashboard and a maturity self-check
+- [Home (Arabic)](https://cybrhyk.com/ar/)
+- [Managed SOC & MDR](https://cybrhyk.com/services/managed-soc-mdr/): 24/7 managed detection and response from an in-Kingdom SOC: named Saudi analysts, MITRE ATT&CK-mapped detection, and evidence for NCA ECC-2 and SAMA CSF.
+- [مركز العمليات المُدار والرصد والاستجابة](https://cybrhyk.com/ar/services/managed-soc-mdr/)
+- [ECC-2 compliance](https://cybrhyk.com/services/ecc-2-compliance/): Close your NCA Essential Cybersecurity Controls gaps: ECC-2:2024 gap assessment, remediation roadmap and continuous evidence across all 108 main controls.
+- [الامتثال للضوابط الأساسية ECC-2](https://cybrhyk.com/ar/services/ecc-2-compliance/)
+- [SAMA Cyber Security Framework](https://cybrhyk.com/services/sama-csf/): Reach and hold SAMA CSF Maturity Level 3: gap assessment, remediation, 24/7 monitoring and evidence for banks, insurers and payments firms in Saudi Arabia.
+- [إطار البنك المركزي السعودي](https://cybrhyk.com/ar/services/sama-csf/)
+- [Incident response & forensics](https://cybrhyk.com/services/incident-response/): On-call incident response and digital forensics in Saudi Arabia: containment, root cause, preserved evidence and regulator-ready reports. Retainer or call-out.
+- [الاستجابة للحوادث والأدلة الرقمية](https://cybrhyk.com/ar/services/incident-response/)
+- [Penetration testing & red team](https://cybrhyk.com/services/penetration-testing/): Infrastructure, web, mobile and cloud penetration testing and red teaming in Saudi Arabia, mapped to NCA ECC-2 and SAMA CSF and verified by re-test.
+- [اختبار الاختراق والفريق الأحمر](https://cybrhyk.com/ar/services/penetration-testing/)
+- [Cloud security & CCC-2](https://cybrhyk.com/services/cloud-security/): Secure your cloud in Saudi Arabia: architecture review, posture management and NCA CCC-2:2024 cloud controls compliance, with data kept in the Kingdom.
+- [أمن السحابة وضوابط CCC-2](https://cybrhyk.com/ar/services/cloud-security/)
+- [NCNICC compliance](https://cybrhyk.com/services/ncnicc-compliance/): Meet the NCA's NCNICC-1:2025 private-sector controls: scoping, gap assessment, remediation and evidence for Category A and B companies in Saudi Arabia.
+- [الامتثال لضوابط NCNICC](https://cybrhyk.com/ar/services/ncnicc-compliance/)
+
+## Notes
+- Market and plan figures on the site are indicative; dashboard and assessment data are illustrative.
